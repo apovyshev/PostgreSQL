@@ -1,8 +1,11 @@
 # Домашнее задание
 
 ### Работа с уровнями изоляции транзакции в PostgreSQL
-Цель: - научится работать с Google Cloud Platform на уровне Google Compute Engine (IaaS)
+### Цель: 
+- научится работать с Google Cloud Platform на уровне Google Compute Engine (IaaS)
 - научится управлять уровнем изолции транзации в PostgreSQL и понимать особенность работы уровней read commited и repeatable read
+
+### Задание:
 - создать новый проект в Google Cloud Platform, например postgres2020-<yyyymmdd>, где yyyymmdd год, месяц и день вашего рождения (имя проекта должно быть уникально на уровне GCP)
 - дать возможность доступа к этому проекту пользователю postgres202010@gmail.com с ролью Project Editor
 - далее создать инстанс виртуальной машины Compute Engine с дефолтными параметрами
