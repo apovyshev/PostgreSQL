@@ -7,7 +7,7 @@
 ![TheAccessProvided](https://github.com/apovyshev/PostgreSQL/blob/main/01.Transactions/TheAccessProvided.PNG)
 
 ### Создаем экземпляр VM в CGP
-[TheInstanceCreated](https://github.com/apovyshev/PostgreSQL/blob/main/01.Transactions/TheInstanceCreated.PNG)
+![TheInstanceCreated](https://github.com/apovyshev/PostgreSQL/blob/main/01.Transactions/TheInstanceCreated.PNG)
 
 ### Подключение к VM через ssh
 1. Генерируем пару ключей через команду `ssh-keygen`.
