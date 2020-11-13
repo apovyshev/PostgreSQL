@@ -2,7 +2,7 @@
 ## 2 вариант:
 
 ### Создаем экземпляр VM в CGP
-VM3Created
+![VM3Created](https://github.com/apovyshev/PostgreSQL/blob/main/02.PostgresSetup/2/VM3Created.PNG)
 
 ### Установка Docker Engine
 
@@ -46,7 +46,7 @@ For more examples and ideas, visit:
  desmond@postgres2:~$ sudo docker network create pg-net
 ae888e62ce6de02fb83607b4e5e542ca4f53a0e77e9f7699a75feabd44b46818
 ```
-3. Запускаем контейнет с PostgreSQL в нашей сети. Чтобы к контейнеру можно было подключиться из сети интернет, пробрасываем порт 5432 наружу, указав параметр `-d 5432:5432`:
+3. Запускаем контейнер с PostgreSQL в нашей сети. Чтобы к контейнеру можно было подключиться из сети интернет, пробрасываем порт 5432 наружу, указав параметр `-d 5432:5432`:
 ```
 desmond@postgres2:~$ sudo  docker run --name pg-server --network pg-net -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 -v /var/lib/postgres:/var/lib/postgresql/data postgres:13
 Unable to find image 'postgres:13' locally
@@ -98,7 +98,8 @@ postgres=# select * from test;
 ### Подключение к базе данных PostgreSQL в контейнере виртуальной машины GCP со своей локальной машины
 
 1. Для подключения к виртуальным машинам GCP необходимо добавить порт 5432 в Google VPC в брандмауэре:
-RuleCreated
+
+![RuleCreated](https://github.com/apovyshev/PostgreSQL/blob/main/02.PostgresSetup/2/RuleCreated.PNG)
 
 2. Для подключения со своей локальной машины к базе данных на удаленном сервере необходимо установить клиент psql:
 ```

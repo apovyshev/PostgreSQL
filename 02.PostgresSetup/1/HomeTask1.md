@@ -2,7 +2,7 @@
 ## 1 вариант:
 
 ### Создаем экземпляр VM в CGP
-VMCreated
+![VMCreated](https://github.com/apovyshev/PostgreSQL/blob/main/02.PostgresSetup/1/VMCreated.PNG)
 
 ### Установка PostgreSQL 13
 1. Для установки PostgreSQL последней версии необходимо выполнить следующую команду:
@@ -48,10 +48,12 @@ Ver Cluster Port Status Owner    Data directory              Log file
 13  main    5432 down   postgres /var/lib/postgresql/13/main /var/log/postgresql/postgresql-13-main.log
 ```
 3. Создаем новый standard persistent диск GKE через Compute Engine -> Disks в том же регионе и зоне что GCE инстанс размером например 10GB
-DiskCreated
+
+![DiskCreated](https://github.com/apovyshev/PostgreSQL/blob/main/02.PostgresSetup/1/DiskCreated.PNG)
 
 4. Добавляем диск на виртуальную машину:
-DiskAdded
+
+![DiskAdded](https://github.com/apovyshev/PostgreSQL/blob/main/02.PostgresSetup/1/DiskAdded.PNG)
 
 5. На самой виртуальной машине проверяем, подтянулся ли наш диск при помощи команды `lsblk`:
 ```
@@ -104,7 +106,7 @@ sdb       8:16   0    10G  0 disk /mnt/data/postgres
 ```
 Новая директория примонтирована на sdb.
 
-5. Добавляем права на запись в наду новую директорию - `sudo chmod a+w /mnt/data/postgres`.
+5. Добавляем права на запись в нашу новую директорию - `sudo chmod a+w /mnt/data/postgres`.
 6. Теперь необходимо добавить правило в fstab, чтобы после перезапуска вм наш диск оставался примонтированным. При помощи `blkid` узнаем UUID для нашего диска:
 ```
 desmond@postgres-2:~$ sudo blkid /dev/sdb
@@ -130,7 +132,7 @@ Error: /var/lib/postgresql/13/main is not accessible or does not exist
 ```
 Как видим, мы получаем ошибку, что кластер либо непоступен, либо вообще не существует.
 
-4. Для запуска класетра необходимо изменить параметр `data_directory` файла `/etc/postgresql/13/main/postgresql.conf`:
+4. Для запуска кластера необходимо изменить параметр `data_directory` файла `/etc/postgresql/13/main/postgresql.conf`:
 ```
 sudo vim /etc/postgresql/13/main/postgresql.conf
 ---
@@ -188,17 +190,20 @@ ident_file = '/etc/postgresql/13/main/pg_ident.conf'    # ident configuration fi
 - sudo -i -u postgres pg_ctlcluster 13 main start
 ```
 2. Отключаем наш диск от виртуальной машины:
-DiskRemoved
 
-3. Создаем новый экземпляр виртуальной машины и устанавливаем PostgreSQL 13 (см. пункты "Установка PostgreSQL 13").
-VM2Created
+![DiskRemoved](https://github.com/apovyshev/PostgreSQL/blob/main/02.PostgresSetup/1/DiskRemoved.PNG)
+
+3. Создаем новый экземпляр виртуальной машины и устанавливаем PostgreSQL 13 (см. пункты "Установка PostgreSQL 13"):
+
+![VM2Created](https://github.com/apovyshev/PostgreSQL/blob/main/02.PostgresSetup/1/VM2Created.PNG)
 ```
 desmond@postgres-2-2:~$ sudo -i -u postgres pg_lsclusters
 Ver Cluster Port Status Owner    Data directory              Log file
 13  main    5432 online postgres /var/lib/postgresql/13/main /var/log/postgresql/postgresql-13-main.log
 ```
 3. Добавляем наш диск с данными прошлой вм на новую машину:
-DiskAdded2
+
+![DiskAdded2](https://github.com/apovyshev/PostgreSQL/blob/main/02.PostgresSetup/1/DiskAdded2.PNG)
 ```
 desmond@postgres-2-2:~$ lsblk
 NAME    MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
