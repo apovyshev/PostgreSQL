@@ -1,0 +1,24 @@
+3 create database testdb
+4 \c testdb
+5 create schema testnm;
+6 create table t1(c1 integer);
+7 insert into t1 values(1);
+8 create role readonly;
+9 grant connect on database testdb TO readonly;
+10 grant usage on schema testnm to readonly;
+11 grant select on all tables in schema testnm TO readonly;
+12 create user testread with password 'test123';
+13 grant readonly TO testread;
+14 \c testdb testread
+15 select * from t1;
+19 \dt
+20 таблица создана в схеме public а не testnm и прав на public для роли readonly не давали
+21 потому что в search_path скорее всего "$user", public при том что схемы $user нет то таблица по умолчанию создалась в public
+22 \c testdb postgres
+23 drop table t1;
+24 create table testnm.t1(c1 integer);
+25 insert into testnm.t1 values(1);
+29 потому что grant select on all tables in schema testnm TO readonly дал доступ только для существующих на тот момент времени таблиц а t1 пересоздавалась
+30 \c testdb postgres; alter default privileges in schema testnm grant select on tables to readonly; \c testdb testread;
+33 потому что alter default будет действовать для новых таблиц а grant select on all tables in schema testnm TO readonly отработал только для существующих на тот момент времени. надо сделать снова или grant select или пересоздать таблицу
+36 это все потому что search_path указывает в первую очередь на схему public. А схема public создается в каждой базе данных по умолчанию. И grant на все действия в этой схеме дается роли public. А роль public добавляется всем новым пользователям. Соответсвенно каждый пользователь может по умолчанию создавать объекты в схеме public любой базы данных, ес-но если у него есть право на подключение к этой базе данных. Чтобы раз и навсегда забыть про роль public - а в продакшн базе данных про нее лучше забыть - выполните следующие действия \c testdb postgres; revoke create on schema public from public; revoke all on database testdb from public; \c testdb testread; 
