@@ -128,6 +128,6 @@ progress: 3600.0 s, 411.3 tps, lat 19.346 ms stddev 27.447
 
 ![Configured](https://github.com/apovyshev/PostgreSQL/blob/main/04.Autovacuum/Configured.png)
 
-Для сравнения, настройка агрессивного autovacuum дана весомый результат по сравнению с дефолтной настройкой:
+Для сравнения, настройка агрессивного autovacuum дала весомый результат по сравнению с дефолтной настройкой:
 
 ![Compare](https://github.com/apovyshev/PostgreSQL/blob/main/04.Autovacuum/Compare.PNG)
