@@ -1,7 +1,7 @@
 ## Выполнение домашнего задания по второй теме "Логический уровень PostgreSQL"
 
 ### Создаем экземпляр VM в CGP
-![VMCreated](https://github.com/apovyshev/PostgreSQL/blob/main/04.Autovauum/VMCreated.PNG)
+![VMCreated](https://github.com/apovyshev/PostgreSQL/blob/main/04.Autovacuum/VMCreated.PNG)
 
 ### Устанавливаем PostgreSQL 13
 ```
@@ -81,7 +81,7 @@ progress: 3600.0 s, 439.0 tps, lat 18.162 ms stddev 18.937
 ```
 Последние 10 минут можно отобразить в виде стеков:
 
-![Source](https://github.com/apovyshev/PostgreSQL/blob/main/04.Autovauum/Source.PNG)
+![Source](https://github.com/apovyshev/PostgreSQL/blob/main/04.Autovacuum/Source.png)
 
 
 3. Меняем параметры autovacuum:
@@ -126,8 +126,8 @@ progress: 3600.0 s, 411.3 tps, lat 19.346 ms stddev 27.447
 ```
 В виде стеков последние 10 минут выглядят следующим образом:
 
-![Configured](https://github.com/apovyshev/PostgreSQL/blob/main/04.Autovauum/Configured.PNG)
+![Configured](https://github.com/apovyshev/PostgreSQL/blob/main/04.Autovacuum/Configured.png)
 
 Для сравнения, настройка агрессивного autovacuum дана весомый результат по сравнению с дефолтной настройкой:
 
-![Compare](https://github.com/apovyshev/PostgreSQL/blob/main/04.Autovauum/Compare.PNG)
+![Compare](https://github.com/apovyshev/PostgreSQL/blob/main/04.Autovacuum/Compare.PNG)
