@@ -1,4 +1,4 @@
-## Выполнение домашнего задания по второй теме "SQL и реляционные СУБД. Введение в PostgreSQL"
+## Выполнение домашнего задания по теме "SQL и реляционные СУБД. Введение в PostgreSQL"
 
 ### Создаем проект в GCP
 ![NewProject](https://github.com/apovyshev/PostgreSQL/blob/main/01.Transactions/NewProject.PNG)

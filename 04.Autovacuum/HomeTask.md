@@ -1,4 +1,4 @@
-## Выполнение домашнего задания по второй теме "Логический уровень PostgreSQL"
+## Выполнение домашнего задания по теме "Логический уровень PostgreSQL"
 
 ### Создаем экземпляр VM в CGP
 ![VMCreated](https://github.com/apovyshev/PostgreSQL/blob/main/04.Autovacuum/VMCreated.PNG)
