@@ -128,4 +128,38 @@ libraries-# group by platform, version_number
 libraries-# order by platform;
 Time: 460525.968 ms
 ```
-Если PostgreSQL обрабатывал запрос примерно 8.4 минуты, то Greenplum справился с ним за ~ 7.6.
+Если PostgreSQL со стандартными настройками кластера обрабатывал запрос примерно 8.4 минуты, то Greenplum справился с ним за ~ 7.6.
+
+5. Попробуем изменить настройки, при помощи PgTune и протестировать запрос в рамках одной машины на двух СУБД еще раз:
+![PgTune](https://github.com/apovyshev/PostgreSQL/blob/main/09.BigData/PgTune.PNG)
+```
+# Greenplum
+desmond@postgres-9-2:/opt/greenplum-db-6-6.12.1$ psql libraries
+psql (9.4.24)
+Type "help" for help.
+
+libraries=# \timing on
+Timing is on.
+libraries=# select dependency_kind, count(version_number) as c
+libraries-# from libraries
+libraries-# group by platform, dependency_kind
+libraries-# order by platform;
+Time: 456318.836 ms
+---
+# PostgreSQL
+desmond@postgres-9-2:/opt/greenplum-db-6-6.12.1$ sudo vim /etc/postgresql/13/main/postgresql.conf
+desmond@postgres-9-2:/opt/greenplum-db-6-6.12.1$ sudo pg_ctlcluster 13 main restart
+desmond@postgres-9-2:/opt/greenplum-db-6-6.12.1$ sudo su postgres
+postgres@postgres-9-2:/opt/greenplum-db-6-6.12.1$ psql libraries
+psql (13.1 (Ubuntu 13.1-1.pgdg18.04+1))
+Type "help" for help.
+libraries=# \timing on
+Timing is on.
+libraries=# select dependency_kind, count(version_number) as c
+from libraries
+group by platform, dependency_kind
+order by platform;
+Time: 140634.731 ms (02:20.635)
+```
+7,6 мин от Greenplum vs 2,3 мин от PostgreSQL
+Как видим, в зависимости от бизнес потребности, можно добиться быстрейшего отклика и через настройки кластера PostgreSQL.
