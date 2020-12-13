@@ -84,7 +84,7 @@ COPY 105811883
 
 1. Первым делом попробуем протестировать обработку через сам GCP BigQuery:
 
-![BigQuery](https://github.com/apovyshev/PostgreSQL/blob/main/09.BigData/BigQuery.png)
+![BigQuery](https://github.com/apovyshev/PostgreSQL/blob/main/09.BigData/BigQuery.PNG)
 
 Как видим, запрос обработался всего за 4,4 сек (обработано 3 ГБ).
 
