@@ -161,5 +161,6 @@ group by platform, dependency_kind
 order by platform;
 Time: 140634.731 ms (02:20.635)
 ```
-7,6 мин от Greenplum vs 2,3 мин от PostgreSQL
+7,6 мин от Greenplum vs 2,3 мин от PostgreSQL.
+
 Как видим, в зависимости от бизнес потребности, можно добиться быстрейшего отклика и через настройки кластера PostgreSQL.
