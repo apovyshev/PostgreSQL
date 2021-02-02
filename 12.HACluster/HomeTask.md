@@ -394,6 +394,7 @@ node_1 |     1 | master-t.us-central1-a.c.verdant-coyote-294709.internal:5432 | 
 node_2 |     2 |  slave-t.us-central1-a.c.verdant-coyote-294709.internal:5432 | 0/5000110 |       yes |             primary |             primary
 ```
 Наши ноды поменялись ролями.
+
 5. Проверим редактирование данных на каждой из них:
 ```
 # node_2
@@ -520,6 +521,7 @@ node_2 |     2 |  slave-t.us-central1-a.c.verdant-coyote-294709.internal:5432 | 
 node_3 |     3 | slave2-t.us-central1-a.c.verdant-coyote-294709.internal:5432 | 0/11000148 |       yes |           secondary |           secondary
 ```
 Наша нода подключена и используется как `secondary`.
+
 6. Проверим содержимое таблицы на `node_3`:
 ```
 postgres@slave2-t:/home/desmond$ psql
